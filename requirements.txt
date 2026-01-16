@@ -8,7 +8,7 @@ PyQt5==5.15.11
 PyQt5_sip==12.15.0
 pyqtgraph==0.13.3
 pysmb==1.2.13
-Requests==2.32.5
-scipy==1.16.3
+Requests
+scipy
 sympy==1.13.3
 wmi==1.5.1
