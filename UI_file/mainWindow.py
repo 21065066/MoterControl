@@ -15,7 +15,7 @@ class MainWindowShow(QMainWindow, imageProcess.Ui_imageProcess):
         self.port = port
         self.select_win = None
         self.offline_flag = False
-        self.tab_list_name = ['电流控制', '转速控制', '位置控制'] # tab1,tab2,tab3 子页名称显示
+        self.tab_list_name = ['经典PID', '新控制算法'] # tab1,tab2,tab3 子页名称显示
         self.init_tab()
 
     def init_tab(self):
