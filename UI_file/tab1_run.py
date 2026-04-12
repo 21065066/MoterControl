@@ -122,6 +122,7 @@ class tab1Window(QWidget, tab1_ui.Ui_tab1_imageProcess):
             self.serial = None
             self.connect_button.setText("打开串口")
             print("串口已关闭")
+            self.logtextEdit.append("串口已关闭")
         else:
             try:
                 port = self.port_combo.currentText()
@@ -132,6 +133,7 @@ class tab1Window(QWidget, tab1_ui.Ui_tab1_imageProcess):
                 self.serial = serial.Serial(port, baud, timeout=1)
                 self.connect_button.setText("关闭串口")
                 print(f"成功打开串口: {port} (Baud: {baud})")
+                self.logtextEdit.append(f"成功打开串口: {port} (Baud: {baud})")
             except Exception as e:
                 QMessageBox.critical(self, "错误", f"打开串口失败: {str(e)}")
 
@@ -140,7 +142,8 @@ class tab1Window(QWidget, tab1_ui.Ui_tab1_imageProcess):
         if self.serial and self.serial.is_open:
             try:
                 self.serial.write(self.test_hex_data)
-                print(f"已发送测试帧: {self.test_hex_data.hex(' ').upper()}")
+                print(f"已发送测试帧 : {self.test_hex_data.hex(' ').upper()}")
+                self.logtextEdit.append(f"已发送测试帧 : {self.test_hex_data.hex(' ').upper()}")
             except Exception as e:
                 QMessageBox.warning(self, "发送失败", f"串口发送失败: {str(e)}")
         else:
@@ -206,7 +209,8 @@ class tab1Window(QWidget, tab1_ui.Ui_tab1_imageProcess):
             
             # 显示结果
             hex_str = self.current_frame.hex(' ').upper()
-            print(f"已生成参数帧 (ID: 0x{param_id:02X}): {hex_str}")
+            print(f"已生成参数帧 : {hex_str}, (ID: 0x{param_id:02X})")
+            self.logtextEdit.append(f"已生成参数帧 : {hex_str}, (ID: 0x{param_id:02X})")
             self.test_hex_data = bytes.fromhex(hex_str)
             
             
