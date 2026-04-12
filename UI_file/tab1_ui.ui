@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1072</width>
-    <height>616</height>
+    <height>692</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,17 +27,53 @@
              <item>
               <widget class="QLabel" name="label_2">
                <property name="text">
-                <string>端口号码</string>
+                <string>端口</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="com_lineEdit"/>
+              <widget class="QComboBox" name="port_combo"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="refresh_button">
+               <property name="text">
+                <string>刷新</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_baud">
+               <property name="text">
+                <string>波特率</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="baud_combo">
+               <property name="currentIndex">
+                <number>1</number>
+               </property>
+               <item>
+                <property name="text">
+                 <string>9600</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>115200</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>921600</string>
+                </property>
+               </item>
+              </widget>
              </item>
              <item>
               <widget class="QPushButton" name="connect_button">
                <property name="text">
-                <string>连接数据</string>
+                <string>打开串口</string>
                </property>
               </widget>
              </item>
@@ -84,13 +120,6 @@
            </item>
            <item>
             <layout class="QGridLayout" name="gridLayout_9">
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_15">
-               <property name="text">
-                <string>电机物理参数</string>
-               </property>
-              </widget>
-             </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label_17">
                <property name="text">
@@ -105,31 +134,24 @@
                </property>
               </widget>
              </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_15">
+               <property name="text">
+                <string>电机物理参数</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QPushButton" name="pole_frame_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
            <item>
             <layout class="QGridLayout" name="gridLayout_11">
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_20">
-               <property name="text">
-                <string>最大q轴电流(A)</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QDoubleSpinBox" name="r_shunt_value">
-               <property name="value">
-                <double>0.020000000000000</double>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_18">
-               <property name="text">
-                <string>电流采样电阻(欧姆)</string>
-               </property>
-              </widget>
-             </item>
              <item row="2" column="1">
               <widget class="QDoubleSpinBox" name="op_gain_value">
                <property name="value">
@@ -141,6 +163,27 @@
               <widget class="QLabel" name="label_21">
                <property name="text">
                 <string>电流采样adc参考电压(伏)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QDoubleSpinBox" name="r_shunt_value">
+               <property name="value">
+                <double>0.020000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QDoubleSpinBox" name="adc_reference_volt_value">
+               <property name="value">
+                <double>3.300000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QSpinBox" name="adc_bits_value">
+               <property name="value">
+                <number>12</number>
                </property>
               </widget>
              </item>
@@ -158,17 +201,17 @@
                </property>
               </widget>
              </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_20">
+               <property name="text">
+                <string>最大q轴电流(A)</string>
+               </property>
+              </widget>
+             </item>
              <item row="2" column="0">
               <widget class="QLabel" name="label_19">
                <property name="text">
                 <string>运放放大倍数</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="QDoubleSpinBox" name="adc_reference_volt_value">
-               <property name="value">
-                <double>3.300000000000000</double>
                </property>
               </widget>
              </item>
@@ -179,10 +222,45 @@
                </property>
               </widget>
              </item>
-             <item row="5" column="1">
-              <widget class="QSpinBox" name="adc_bits_value">
-               <property name="value">
-                <number>12</number>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_18">
+               <property name="text">
+                <string>电流采样电阻(欧姆)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QPushButton" name="r_shunt_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QPushButton" name="op_gain_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QPushButton" name="max_current_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="2">
+              <widget class="QPushButton" name="adc_reference_volt_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="2">
+              <widget class="QPushButton" name="adc_bits_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
                </property>
               </widget>
              </item>
@@ -190,10 +268,24 @@
            </item>
            <item>
             <layout class="QGridLayout" name="gridLayout_10">
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_24">
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_32">
                <property name="text">
-                <string>电机速度计算频率(Hz)</string>
+                <string>电机软件上的多圈周期(*pi)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_23">
+               <property name="text">
+                <string>驱动桥pwm频率(Hz)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_22">
+               <property name="text">
+                <string>单片机配置参数</string>
                </property>
               </widget>
              </item>
@@ -207,20 +299,6 @@
                </property>
               </widget>
              </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_32">
-               <property name="text">
-                <string>电机软件上的多圈周期(*pi)</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_22">
-               <property name="text">
-                <string>单片机配置参数</string>
-               </property>
-              </widget>
-             </item>
              <item row="2" column="1">
               <widget class="QDoubleSpinBox" name="moter_speed_calc_freq_value">
                <property name="maximum">
@@ -231,17 +309,38 @@
                </property>
               </widget>
              </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_23">
-               <property name="text">
-                <string>驱动桥pwm频率(Hz)</string>
-               </property>
-              </widget>
-             </item>
              <item row="3" column="1">
               <widget class="QDoubleSpinBox" name="position_cycle_value">
                <property name="value">
                 <double>6.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_24">
+               <property name="text">
+                <string>电机速度计算频率(Hz)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QPushButton" name="pwm_freq_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QPushButton" name="speed_calc_freq_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QPushButton" name="position_cycle_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
                </property>
               </widget>
              </item>
@@ -262,6 +361,13 @@
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <item>
+              <widget class="QRadioButton" name="nocontrol_radioButton">
+               <property name="text">
+                <string>不控制</string>
+               </property>
+              </widget>
+             </item>
              <item>
               <widget class="QRadioButton" name="position_ctrl_radioButton">
                <property name="text">
@@ -300,21 +406,21 @@
                </property>
               </widget>
              </item>
+             <item>
+              <widget class="QPushButton" name="control_type_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
            <item>
             <layout class="QGridLayout" name="gridLayout">
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_12">
-               <property name="text">
-                <string>torque Q p</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QDoubleSpinBox" name="position_p_value">
+             <item row="1" column="1">
+              <widget class="QDoubleSpinBox" name="speed_p_value">
                <property name="value">
-                <double>3.500000000000000</double>
+                <double>0.020000000000000</double>
                </property>
               </widget>
              </item>
@@ -328,103 +434,6 @@
                </property>
               </widget>
              </item>
-             <item row="3" column="2">
-              <widget class="QLabel" name="label_13">
-               <property name="text">
-                <string>torque Q i</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_6">
-               <property name="text">
-                <string>speed p</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QDoubleSpinBox" name="torque_q_p_value">
-               <property name="value">
-                <double>1.200000000000000</double>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_9">
-               <property name="text">
-                <string>torque D p</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="4">
-              <widget class="QLabel" name="label_11">
-               <property name="text">
-                <string>torque D d</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="4">
-              <widget class="QLabel" name="label_8">
-               <property name="text">
-                <string>speed d</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QDoubleSpinBox" name="speed_p_value">
-               <property name="value">
-                <double>0.020000000000000</double>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="5">
-              <widget class="QDoubleSpinBox" name="position_d_value">
-               <property name="value">
-                <double>7.000000000000000</double>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="5">
-              <widget class="QDoubleSpinBox" name="torque_d_d_value"/>
-             </item>
-             <item row="3" column="4">
-              <widget class="QLabel" name="label_14">
-               <property name="text">
-                <string>torque Q d</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="3">
-              <widget class="QDoubleSpinBox" name="speed_i_value">
-               <property name="value">
-                <double>0.000000000000000</double>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="5">
-              <widget class="QDoubleSpinBox" name="speed_d_value"/>
-             </item>
-             <item row="2" column="1">
-              <widget class="QDoubleSpinBox" name="torque_d_p_value">
-               <property name="value">
-                <double>1.200000000000000</double>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="3">
-              <widget class="QDoubleSpinBox" name="torque_d_i_value">
-               <property name="value">
-                <double>0.020000000000000</double>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="3">
-              <widget class="QDoubleSpinBox" name="torque_q_i_value">
-               <property name="value">
-                <double>0.020000000000000</double>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="4">
               <widget class="QLabel" name="label_5">
                <property name="text">
@@ -435,10 +444,38 @@
              <item row="3" column="5">
               <widget class="QDoubleSpinBox" name="torque_q_d_value"/>
              </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_9">
+               <property name="text">
+                <string>torque D p</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="4">
+              <widget class="QLabel" name="label_14">
+               <property name="text">
+                <string>torque Q d</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="4">
+              <widget class="QLabel" name="label_11">
+               <property name="text">
+                <string>torque D d</string>
+               </property>
+              </widget>
+             </item>
              <item row="2" column="2">
               <widget class="QLabel" name="label_10">
                <property name="text">
                 <string>torque D i</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QLabel" name="label_13">
+               <property name="text">
+                <string>torque Q i</string>
                </property>
               </widget>
              </item>
@@ -449,6 +486,30 @@
                </property>
               </widget>
              </item>
+             <item row="1" column="5">
+              <widget class="QDoubleSpinBox" name="speed_d_value"/>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string>torque Q p</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="4">
+              <widget class="QLabel" name="label_8">
+               <property name="text">
+                <string>speed d</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="3">
+              <widget class="QDoubleSpinBox" name="torque_q_i_value">
+               <property name="value">
+                <double>0.020000000000000</double>
+               </property>
+              </widget>
+             </item>
              <item row="1" column="2">
               <widget class="QLabel" name="label_7">
                <property name="text">
@@ -456,17 +517,90 @@
                </property>
               </widget>
              </item>
+             <item row="1" column="3">
+              <widget class="QDoubleSpinBox" name="speed_i_value">
+               <property name="value">
+                <double>0.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QDoubleSpinBox" name="torque_q_p_value">
+               <property name="value">
+                <double>1.200000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>speed p</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QDoubleSpinBox" name="torque_d_p_value">
+               <property name="value">
+                <double>1.200000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QDoubleSpinBox" name="position_p_value">
+               <property name="value">
+                <double>3.500000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="5">
+              <widget class="QDoubleSpinBox" name="position_d_value">
+               <property name="value">
+                <double>7.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="3">
+              <widget class="QDoubleSpinBox" name="torque_d_i_value">
+               <property name="value">
+                <double>0.020000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="5">
+              <widget class="QDoubleSpinBox" name="torque_d_d_value"/>
+             </item>
+             <item row="0" column="6">
+              <widget class="QPushButton" name="position_pid_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="6">
+              <widget class="QPushButton" name="speed_pid_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="6">
+              <widget class="QPushButton" name="torque_D_pid_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="6">
+              <widget class="QPushButton" name="torque_Q_pid_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
            <item>
             <layout class="QGridLayout" name="gridLayout_7">
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_28">
-               <property name="text">
-                <string>位置模式</string>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="1">
               <widget class="QLabel" name="label_29">
                <property name="text">
@@ -481,6 +615,20 @@
                </property>
                <property name="value">
                 <double>90.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_28">
+               <property name="text">
+                <string>位置模式</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QPushButton" name="target_angle_position_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
                </property>
               </widget>
              </item>
@@ -509,6 +657,13 @@
                </property>
               </widget>
              </item>
+             <item row="0" column="3">
+              <widget class="QPushButton" name="target_speed_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
            <item>
@@ -520,6 +675,13 @@
                </property>
               </widget>
              </item>
+             <item row="0" column="5">
+              <widget class="QPushButton" name="target_torque_D_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
              <item row="0" column="0">
               <widget class="QLabel" name="label_25">
                <property name="text">
@@ -527,22 +689,36 @@
                </property>
               </widget>
              </item>
-             <item row="0" column="3">
+             <item row="0" column="2">
+              <widget class="QDoubleSpinBox" name="target_torque_norm_d"/>
+             </item>
+             <item row="1" column="5">
+              <widget class="QPushButton" name="target_torque_Q_CreateButton">
+               <property name="text">
+                <string>生成帧</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
               <widget class="QLabel" name="label_27">
                <property name="text">
                 <string>Q轴百分比强度</string>
                </property>
               </widget>
              </item>
-             <item row="0" column="4">
+             <item row="1" column="2">
               <widget class="QDoubleSpinBox" name="target_torque_norm_q">
                <property name="value">
                 <double>0.400000000000000</double>
                </property>
               </widget>
              </item>
-             <item row="0" column="2">
-              <widget class="QDoubleSpinBox" name="target_torque_norm_d"/>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_33">
+               <property name="text">
+                <string>转矩模式</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
@@ -564,9 +740,9 @@
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="set_pushButton">
+            <widget class="QPushButton" name="send_test_button">
              <property name="text">
-              <string>设置</string>
+              <string>发送测试帧</string>
              </property>
             </widget>
            </item>
