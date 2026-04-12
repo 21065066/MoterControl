@@ -53,6 +53,11 @@ QCalendarWidget {
     border: 1px solid blank;
 }
 
+QLabel {
+    color: #000000;
+    background-color: transparent;
+}
+
 QCalendarWidget QAbstractItemView:enabled{
     color:#000000;
     background-color:#FFFFFF;
@@ -210,6 +215,11 @@ QToolButton:disabled {
     border: 1px solid rgba(221, 223, 230, 50%);
     background: qlineargradient(spread: pad, x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(255, 255, 255, 50%), stop: 1 rgba(238, 238, 238, 50%))
 }
+
+QRadioButton {
+    color: #000000;
+}
+
 QRadioButton::indicator {
     width: 13px;
     height: 13px;

@@ -58,4 +58,11 @@ class MainWindowShow(QMainWindow, imageProcess.Ui_imageProcess):
                     continue
                 self.create_tab(index)
         self.horizontalLayout.addWidget(self.tabWidget)
+    
+    def applyTheme(self):
+        from run import ThemeManager
+        for i in range(self.tabWidget.count()):
+            tab = self.tabWidget.widget(i)
+            if hasattr(tab, 'applyTheme'):
+                tab.applyTheme()
 

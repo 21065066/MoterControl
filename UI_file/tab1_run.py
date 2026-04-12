@@ -109,6 +109,9 @@ class tab1Window(QWidget, tab1_ui.Ui_tab1_imageProcess):
         # 设置y轴范围
         self.plotView.setYRange(0, 100, padding=0)
         
+        # 添加主题监听
+        self.applyTheme()
+        
     def refresh_ports(self):
         # 刷新可用串口列表
         ports = [port.device for port in serial.tools.list_ports.comports()]
@@ -336,4 +339,12 @@ class tab1Window(QWidget, tab1_ui.Ui_tab1_imageProcess):
         }
         
         return params
+    
+    def applyTheme(self):
+        from run import ThemeManager
+        theme = ThemeManager.getCurrentTheme()
+        if theme == 'dark':
+            self.plotView.setBackground(None)
+        else:
+            self.plotView.setBackground('w')
 

@@ -12,6 +12,7 @@ class tab2Window(QWidget, tab2_ui.Ui_tab2_imageProcess):
         tab2_ui.Ui_tab2_imageProcess.__init__(self)
         self.setupUi(self)
         self.testBtn.clicked.connect(self.test_func)
+        self.applyTheme()
 
  
     def set_lib(self, lib, cur_ip, port, offline_flag):
@@ -22,3 +23,11 @@ class tab2Window(QWidget, tab2_ui.Ui_tab2_imageProcess):
 
     def test_func(self):
         print("测试tab2按钮被点击")
+    
+    def applyTheme(self):
+        from run import ThemeManager
+        theme = ThemeManager.getCurrentTheme()
+        if theme == 'dark':
+            pass
+        else:
+            pass
